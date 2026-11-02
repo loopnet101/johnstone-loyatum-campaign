@@ -1,5 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Droplets, GraduationCap, Route as RoadIcon, ShieldCheck, Sprout, Share2 } from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+  Bike,
+  Droplets,
+  GraduationCap,
+  Route as RoadIcon,
+  ShieldCheck,
+  Sprout,
+  Share2,
+  Trophy,
+  Wifi,
+} from "lucide-react";
 import heroImg from "@/assets/pokot-rally.jpg";
 
 export const Route = createFileRoute("/")({
@@ -35,6 +46,38 @@ const agenda = [
 ];
 
 const wards = ["Chepareria", "Batei", "Lelan", "Tapach"];
+
+const audiences = ["Vijana", "Akina Mama", "Wazee", "Wafugaji", "Wakulima", "Wanabiashara"];
+
+const youthPledges = [
+  { icon: Wifi, title: "Ajira Digital", text: "A free Wi-Fi tech hub in every ward. Online work, from home." },
+  { icon: Trophy, title: "Talanta", text: "Football, athletics and music — leagues, kits and real stages." },
+  { icon: GraduationCap, title: "Bursary Bila Kona", text: "Transparent bursaries, published online. No connections needed." },
+  { icon: Bike, title: "Hustle Fund", text: "Seed capital for boda boda, youth SACCOs and small biashara." },
+];
+
+// Kenya's general election: second Tuesday of August, 2027.
+const ELECTION_DAY = new Date("2027-08-10T06:00:00+03:00").getTime();
+
+function Countdown() {
+  const [days, setDays] = useState<number | null>(null);
+  useEffect(() => {
+    const update = () => setDays(Math.max(0, Math.ceil((ELECTION_DAY - Date.now()) / 86_400_000)));
+    update();
+    const id = setInterval(update, 60_000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <section className="bg-ink py-10 text-center text-ink-foreground">
+      <p className="text-base font-bold uppercase tracking-[0.3em] text-sun">Election Day · 10 Aug 2027</p>
+      <p className="mt-2 font-display text-7xl md:text-9xl">
+        {days ?? "—"} <span className="text-sun">siku</span>
+      </p>
+      <p className="mt-2 text-lg font-semibold text-ink-foreground/80">Saa ni sasa. Every day counts.</p>
+    </section>
+  );
+}
 
 function Index() {
   const handleShare = async () => {
@@ -114,7 +157,11 @@ function Index() {
               <span className="text-bead">★</span>
               <span>Tuko Pamoja</span>
               <span className="text-bead">★</span>
+              <span>Vijana Tuamke</span>
+              <span className="text-bead">★</span>
               <span>Mguu kwa Mguu</span>
+              <span className="text-bead">★</span>
+              <span>Gen Z Tuko Ready</span>
               <span className="text-bead">★</span>
               <span>Pokot South Mpya</span>
               <span className="text-bead">★</span>
@@ -122,6 +169,8 @@ function Index() {
           ))}
         </div>
       </div>
+
+      <Countdown />
 
       {/* WHY */}
       <section className="mx-auto max-w-4xl px-5 py-20 text-center md:py-28">
@@ -132,6 +181,63 @@ function Index() {
           Raised among us, schooled at Kenyatta University, and ready to carry the voice of
           Pokot South to Parliament. Not promises — <strong className="text-foreground">results.</strong>
         </p>
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          {audiences.map((a) => (
+            <span
+              key={a}
+              className="rounded-full border-2 border-foreground px-5 py-2 text-base font-bold uppercase tracking-wide"
+            >
+              {a}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* YOUTH */}
+      <section id="vijana" className="relative overflow-hidden bg-sun py-20 text-ink md:py-28">
+        <div className="mx-auto max-w-6xl px-5">
+          <p className="inline-block -rotate-2 rounded-sm bg-ink px-4 py-2 text-base font-bold uppercase tracking-widest text-sun">
+            Gen Z · Millennials · Hustlers
+          </p>
+          <h2 className="mt-6 font-display text-6xl sm:text-7xl md:text-[8rem]">
+            Vijana,
+            <br />
+            <span className="text-bead">hii ni yetu!</span>
+          </h2>
+          <p className="mt-6 max-w-2xl text-xl font-semibold md:text-2xl">
+            Sisi ndio wengi. Sisi ndio nguvu. Tusipige kelele mtandaoni pekee — tupige kura.
+          </p>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {youthPledges.map(({ icon: Icon, title, text }) => (
+              <div
+                key={title}
+                className="rounded-sm bg-ink p-6 text-ink-foreground transition-transform hover:-translate-y-1"
+              >
+                <Icon className="h-9 w-9 text-sun" strokeWidth={2.2} />
+                <h3 className="mt-4 font-display text-3xl">{title}</h3>
+                <p className="mt-2 text-lg leading-snug text-ink-foreground/80">{text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 flex flex-col items-start gap-5 rounded-sm border-4 border-ink p-6 md:flex-row md:items-center md:justify-between md:p-8">
+            <div>
+              <p className="font-display text-4xl md:text-5xl">Una ID? Jisajili!</p>
+              <p className="mt-2 text-lg font-semibold">
+                No card, no voice. Register as a voter and bring five friends.
+              </p>
+            </div>
+            <a
+              href="https://www.iebc.or.ke"
+              target="_blank"
+              rel="noreferrer"
+              className="shrink-0 rounded-sm bg-bead px-7 py-4 text-lg font-bold uppercase tracking-wide text-primary-foreground transition-transform hover:-translate-y-0.5"
+            >
+              Register to Vote
+            </a>
+          </div>
+        </div>
       </section>
 
       {/* AGENDA */}
