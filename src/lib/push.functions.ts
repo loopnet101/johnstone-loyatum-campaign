@@ -63,6 +63,8 @@ export const sendPushNotification = createServerFn({ method: "POST" })
     }
 
     const { buildPushHTTPRequest } = await import("@pushforge/builder");
+    const { getRequest } = await import("@tanstack/react-start/server");
+    const adminContact = new URL(getRequest().url).origin;
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
     const { data: subs, error } = await supabaseAdmin
@@ -86,7 +88,7 @@ export const sendPushNotification = createServerFn({ method: "POST" })
           subscription: { endpoint: s.endpoint, keys: { p256dh: s.p256dh, auth: s.auth } },
           message: {
             payload,
-            adminContact: "mailto:campaign@loyatum2027.ke",
+            adminContact,
             options: { ttl: 86400, urgency: "high" },
           },
         });

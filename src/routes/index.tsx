@@ -12,6 +12,7 @@ import {
   Wifi,
 } from "lucide-react";
 import heroImg from "@/assets/pokot-rally.jpg";
+import { AppActions } from "@/components/AppActions";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -296,7 +297,8 @@ function Index() {
           <p className="mt-6 text-xl font-semibold md:text-2xl">
             Tell your family, your village, your WhatsApp group. 2027 tunaenda na Loyatum.
           </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <div className="mt-10 space-y-4">
+            <AppActions />
             <button
               onClick={handleShare}
               className="inline-flex items-center gap-2 rounded-sm bg-sun px-8 py-4 text-lg font-bold uppercase tracking-wide text-ink transition-transform hover:-translate-y-0.5"
