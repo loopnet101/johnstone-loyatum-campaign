@@ -37,8 +37,6 @@ const agenda = [
 const wards = ["Chepareria", "Batei", "Lelan", "Tapach"];
 
 function Index() {
-  const shareUrl = typeof window === "undefined" ? "" : window.location.href;
-
   const handleShare = async () => {
     const url = window.location.href;
     if (navigator.share) {
@@ -199,14 +197,6 @@ function Index() {
             >
               <Share2 className="h-5 w-5" /> Share on WhatsApp
             </button>
-            <a
-              href={`https://wa.me/?text=${encodeURIComponent(SHARE_TEXT + shareUrl)}`}
-              target="_blank"
-              rel="noreferrer"
-              className="sr-only"
-            >
-              Share link
-            </a>
           </div>
         </div>
       </section>
