@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep supporter navigation in the shared shell and hide it on team-only routes, so public campaign tabs remain consistent without exposing navigation on staff tools.
