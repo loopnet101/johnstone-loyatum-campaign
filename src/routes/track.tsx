@@ -312,6 +312,11 @@ function TrackPage() {
           </section>
         </aside>
       </div>
+      <footer className="mx-auto max-w-6xl px-5 py-3 text-right">
+        <Link to="/admin" className="text-xs font-semibold text-muted-foreground underline underline-offset-4 hover:text-foreground">
+          Campaign team · Preview
+        </Link>
+      </footer>
     </main>
   );
 }

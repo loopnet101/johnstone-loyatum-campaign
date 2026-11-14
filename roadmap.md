@@ -1,3 +1,4 @@
 - [x] Add mobile-only Home, Track, Updates, and Join navigation.
 - [x] Build a distinct, evidence-conscious thread-style Track page and focused Updates/Join pages.
-- [ ] Verify route coverage, mobile tab behavior, and preview health.
+- [x] Add a clearly labeled sample team desk with Posts, Events, and Media navigation.
+- [ ] Verify team/supporter navigation separation, route coverage, and preview health.

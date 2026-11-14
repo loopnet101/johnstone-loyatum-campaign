@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as JoinRouteImport } from './routes/join'
 import { Route as SendRouteImport } from './routes/send'
 import { Route as TrackRouteImport } from './routes/track'
@@ -18,6 +19,11 @@ import { Route as UpdatesRouteImport } from './routes/updates'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JoinRoute = JoinRouteImport.update({
@@ -43,6 +49,7 @@ const UpdatesRoute = UpdatesRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/join': typeof JoinRoute
   '/send': typeof SendRoute
   '/track': typeof TrackRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/join': typeof JoinRoute
   '/send': typeof SendRoute
   '/track': typeof TrackRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/join': typeof JoinRoute
   '/send': typeof SendRoute
   '/track': typeof TrackRoute
@@ -65,14 +74,15 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/join' | '/send' | '/track' | '/updates'
+  fullPaths: '/' | '/admin' | '/join' | '/send' | '/track' | '/updates'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/join' | '/send' | '/track' | '/updates'
-  id: '__root__' | '/' | '/join' | '/send' | '/track' | '/updates'
+  to: '/' | '/admin' | '/join' | '/send' | '/track' | '/updates'
+  id: '__root__' | '/' | '/admin' | '/join' | '/send' | '/track' | '/updates'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
   JoinRoute: typeof JoinRoute
   SendRoute: typeof SendRoute
   TrackRoute: typeof TrackRoute
@@ -86,6 +96,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/join': {
@@ -121,6 +138,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
   JoinRoute: JoinRoute,
   SendRoute: SendRoute,
   TrackRoute: TrackRoute,

@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep supporter navigation in the shared shell and hide it on team-only routes, so public campaign tabs remain consistent without exposing navigation on staff tools.
+- Keep team preview tools on separate routes with their own navigation, outside the supporter shell.

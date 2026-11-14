@@ -129,7 +129,7 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouter().state.location.pathname;
-  const showSupporterNav = pathname !== "/send";
+  const showSupporterNav = pathname !== "/send" && pathname !== "/admin";
 
   return (
     <QueryClientProvider client={queryClient}>
