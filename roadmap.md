@@ -1,4 +1,10 @@
 - [x] Add mobile-only Home, Track, Updates, and Join navigation.
 - [x] Build a distinct, evidence-conscious thread-style Track page and focused Updates/Join pages.
 - [x] Add a clearly labeled sample team desk with Posts, Events, and Media navigation.
+- [ ] Phase 1 — create secure content, media, settings, enquiry, profile, role, and audit data structures.
+- [ ] Phase 2 — replace sample Track feed with verified activities; build real Updates archive and article pages.
+- [ ] Phase 3 — add validated, privacy-conscious Join enquiry submission and confirmation.
+- [ ] Phase 4 — replace the public sample team desk with protected admin sign-in and content management.
+- [ ] Phase 5 — connect public campaign pages to published database content and settings.
+- [ ] Phase 6 — complete offline fallback, SEO, low-bandwidth behavior, and end-to-end verification.
 - [ ] Verify team/supporter navigation separation, route coverage, and preview health.
